@@ -8,9 +8,9 @@ var Smp3Controllers = angular.module('Smp3Controllers', [
 
 Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store',
     function ($scope, $http, store) {
-        // $http.defaults.headers.common = {Accept: "application/json, text/plain, */*"};
-        // $http.defaults.headers.post = {"Content-Type": "text/plain"};
-        // $http.defaults.useXDomain = true;
+//         $http.defaults.headers.common = {Accept: "application/json, text/plain, */*"};
+//         $http.defaults.headers.post = {"Content-Type": "text/plain"};
+//         $http.defaults.useXDomain = true;
 
         $scope.login = function (user) {
             console.log('login', user);
@@ -21,24 +21,16 @@ Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store',
         };
     }]);
 
-
-Smp3Controllers.controller('Smp3DiscoverCtrl', ['$scope', '$http',
-    function ($scope, $http) {
-        $http.get('/api/discover').success(function (data) {
-
-        });
-    }]);
-
 Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$http', 'ngAudio', 'store',
     function ($scope, $http, ngAudio, store) {
         $scope.discover = function () {
-            $http.get('/api/discover').success(function (data) {
-                     $scope.getLibrary()
+            $http.get('http://localhost:8000/api/discover').success(function (data) {
+                     $scope.getLibrary();
             });
         };
 
         $scope.getLibrary = function () {
-            $http.get('/api/library').success(function (data) {
+            $http.get('http://localhost:8000/api/library').success(function (data) {
                 $scope.library = data;
             });
         };

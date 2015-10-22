@@ -33,9 +33,8 @@ smp3App.config(['$routeProvider',
                     templateUrl: 'partials/login.html',
                     controller: 'Smp3LoginCtrl'
                 }).
-                when('/discover', {
-                    templateUrl: 'partials/discover.html',
-                    controller: 'Smp3DiscoverCtrl'
+                when('/config', {
+                   templateUrl: 'partials/config.html' 
                 }).
                 when('/', {
                     templateUrl: 'partials/main.html',
