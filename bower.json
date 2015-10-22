@@ -1,0 +1,17 @@
+{
+  "name": "angular-smp3-client",
+  "description": "",
+  "version": "0.0.0",
+  "private": true,
+  "directory": "./components/",
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x",
+    "angular-jwt": "*",
+    "a0-angular-storage": "~0.0.6",
+    "ui-router": "~0.2.11"
+  }
+}
