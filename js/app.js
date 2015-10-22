@@ -29,11 +29,11 @@ smp3App.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
                 when('/', {
-                    templateUrl: '/client/partials/login.html',
+                    templateUrl: 'partials/login.html',
                     controller: 'Smp3LoginCtrl'
                 }).
                 when('/discover', {
-                    templateUrl: '/client/partials/discover.html',
+                    templateUrl: 'partials/discover.html',
                     controller: 'Smp3DiscoverCtrl'
                 })        
         ;
