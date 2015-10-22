@@ -1,1 +1,7 @@
-login {{test}}
+<div ng-controller="Smp3LoginCtrl">
+    <form novalidate class="login-form">
+        Login: <input type="text" value="" name="_username" ng-model="user._username" /><br />
+        Password: <input type="text" value="" name="_password" ng-model="user._password"/><br />
+        <input type="button" ng-click="login(user)" value="Login">
+    </form>
+</div>

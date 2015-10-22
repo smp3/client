@@ -4,6 +4,7 @@ var smp3App = angular.module('smp3App', [
     'ngRoute',
     'angular-jwt',
     'angular-storage',
+    'ngAudio',
     'Smp3Controllers'
 ]).config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['myService', function (myService) {
@@ -14,12 +15,12 @@ var smp3App = angular.module('smp3App', [
     $httpProvider.interceptors.push('jwtInterceptor');
 }).config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['config', function (config) {
-            // Skip authentication for any requests ending in .html
+
             if (config.url.substr(config.url.length - 5) == '.html') {
                 return null;
             }
 
-            return localStorage.getItem('id_token');
+            return localStorage.getItem('jwt');
         }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
@@ -28,13 +29,18 @@ var smp3App = angular.module('smp3App', [
 smp3App.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-                when('/', {
+                when('/login', {
                     templateUrl: 'partials/login.html',
                     controller: 'Smp3LoginCtrl'
                 }).
                 when('/discover', {
                     templateUrl: 'partials/discover.html',
                     controller: 'Smp3DiscoverCtrl'
-                })        
-        ;
+                }).
+                when('/', {
+                    templateUrl: 'partials/main.html',
+                    controller: 'Smp3MainCtrl'
+                })
+
+                ;
     }]);

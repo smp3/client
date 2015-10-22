@@ -1,0 +1,7 @@
+<button ng-click="discover()">Discover</button>
+<ul>
+    <li ng-repeat="item in library">
+        {{item.id}} - {{item.file_name}}
+        <button ng-click="play(item)">Play</button>
+    </li>
+</ul>
