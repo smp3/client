@@ -21,11 +21,12 @@ Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store',
         };
     }]);
 
-Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$http', 'ngAudio', 'store',
-    function ($scope, $http, ngAudio, store) {
+Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$http', 'ngAudio', 'store', 'PlayerService',
+    function ($scope, $http, ngAudio, store, player) {
+
         $scope.discover = function () {
             $http.get('http://localhost:8000/api/discover').success(function (data) {
-                     $scope.getLibrary();
+                $scope.getLibrary();
             });
         };
 
@@ -34,15 +35,29 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$http', 'ngAudio', 'store
                 $scope.library = data;
             });
         };
+
+        $scope.play = function (file) {
+            player.play(file);
+        };
+
+        $scope.getLibrary();
+
+    }]);
+
+
+Smp3Controllers.controller('Smp3PlayerCtrl', ['$scope', '$http', 'ngAudio', 'store', 'PlayerService',
+    function ($scope, $http, ngAudio, store, player) {
+        
+        
+        player.bindScope($scope);
         
         $scope.play = function (file) {
-            console.log(file);
+             console.log(file);
             var token = store.get('jwt');
             console.log('Token', token);
-            $scope.sound = ngAudio.load('/api/'+file.id+'/stream.json?token='+token);
+            $scope.sound = ngAudio.load('/api/' + file.id + '/stream.json?token=' + token);
             $scope.sound.play();
         };
-        
-        $scope.getLibrary();
+
 
     }]);
