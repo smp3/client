@@ -20,11 +20,9 @@ Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store',
 Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngAudio', 'store', 'PlayerService',
     function ($scope, $location, $http, ngAudio, store, player) {
 
-
         var config = store.get('config');
-         console.log(config);
+        
         if (!config) {
-            console.log(config);
             $location.path('/config');
         }
 
@@ -51,6 +49,17 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
 
 Smp3Controllers.controller('Smp3PlayerCtrl', ['$scope', '$http', 'ngAudio', 'store', 'PlayerService',
     function ($scope, $http, ngAudio, store, player) {
+        $scope.play= function() {
+            player.playCurrent();
+        };
+        
+        $scope.pause = function () {
+            player.pause();
+        };
+        
+        $scope.stop = function () {
+            player.stop();
+        };
         
         player.bindScope($scope);
 

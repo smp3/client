@@ -8,6 +8,23 @@ smp3App.service('PlayerService', ['ngAudio', 'store', function (ngAudio, store) 
         $this.scope = scope;
     };
 
+    this.pause = function () {
+        $this.sound.pause();
+    };
+    
+    this.stop = function () {
+        $this.sound.stop();
+    };
+        
+    this.playCurrent = function () {
+      if(!$this.sound) {
+          return;
+      }  
+      
+      $this.sound.play();
+      
+    };
+        
     this.play = function (file) {
         if ($this.sound) {
             $this.sound.stop();
