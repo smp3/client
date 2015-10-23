@@ -12,10 +12,13 @@ smp3App.service('PlayerService', ['ngAudio', 'store', function (ngAudio, store) 
         if ($this.sound) {
             $this.sound.stop();
         }
+        
         $this.scope.current_file = file;
 
         token = store.get('jwt');
-        $this.sound = ngAudio.load('http://localhost:8000/api/' + file.id + '/stream.json?token=' + token);
+        config = store.get('config');
+        console.log('config', config);
+        $this.sound = ngAudio.load(config.server_url+'/api/' + file.id + '/stream.json?token=' + token);
         
         
         

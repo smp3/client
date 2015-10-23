@@ -5,7 +5,7 @@ var smp3App = angular.module('smp3App', [
     'angular-jwt',
     'angular-storage',
     'ngAudio',
-    'Smp3Controllers'
+    'Smp3Controllers',
 ]).config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['myService', function (myService) {
             myService.doSomething();
@@ -24,6 +24,21 @@ var smp3App = angular.module('smp3App', [
         }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
+}).config(function ($httpProvider) {
+    $httpProvider.interceptors.push(function ($q) {
+        return {
+            'request': function (config) {
+                var sconfig =angular.fromJson(localStorage.getItem('config'));
+                if (config.url.substr(config.url.length - 5) != '.html') {
+                    config.url = sconfig.server_url + config.url;
+                }
+
+                return config || $q.when(config);
+
+            }
+
+        }
+    });
 });
 
 smp3App.config(['$routeProvider',
@@ -34,7 +49,8 @@ smp3App.config(['$routeProvider',
                     controller: 'Smp3LoginCtrl'
                 }).
                 when('/config', {
-                   templateUrl: 'partials/config.html' 
+                    templateUrl: 'partials/config.html',
+                    controller: 'Smp3ConfigCtrl'
                 }).
                 when('/', {
                     templateUrl: 'partials/main.html',
