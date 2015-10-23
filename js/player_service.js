@@ -3,11 +3,7 @@ smp3App.service('PlayerService', ['ngAudio', 'store', function (ngAudio, store) 
 
     this.sound = null;
     this.scope = null;
-
-
-
-   
-
+    
     this.bindScope = function (scope) {
         $this.scope = scope;
     };
@@ -19,7 +15,7 @@ smp3App.service('PlayerService', ['ngAudio', 'store', function (ngAudio, store) 
         $this.scope.current_file = file;
 
         token = store.get('jwt');
-        $this.sound = ngAudio.load('/api/' + file.id + '/stream.json?token=' + token);
+        $this.sound = ngAudio.load('http://localhost:8000/api/' + file.id + '/stream.json?token=' + token);
         
         
         
