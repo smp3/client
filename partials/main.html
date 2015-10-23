@@ -1,12 +1,20 @@
 <button ng-click="discover()">Discover</button>
-<ul>
-    <li ng-repeat="item in library">
-        {{item.id}} - {{item.file_name}}
-        <button ng-click="play(item)">
-            Play
-        </button>
-    </li>
-</ul>
+<div class="library">
+    <ul>
+        <li ng-repeat="item in library">
+            {{item.id}} - {{item.file_name}}
+            <button ng-click="play(item)">
+                Play
+            </button>
+            <button>
+                Enqueue
+            </button>
+        </li>
+    </ul>
+</div>
+<div class="playlist">
+    
+</div>
 <div id="player" ng-controller="Smp3PlayerCtrl">
     <div>
         Now playing: {{current_file.file_name}}
