@@ -6,14 +6,19 @@
             <button ng-click="play(item)">
                 Play
             </button>
-            <button>
+            <button ng-click="enqueue(item)">
                 Enqueue
             </button>
         </li>
     </ul>
 </div>
+<h2>Playlist</h2>
 <div class="playlist" ng-controller="Smp3PlaylistCtrl">
-    
+    <ul>
+     <li ng-repeat="item in queue track by $index">
+         {{item.file_name}} <button>Delete</button>
+     </li>
+    </ul>
 </div>
 <div id="player" ng-controller="Smp3PlayerCtrl">
     <div>

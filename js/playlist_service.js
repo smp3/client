@@ -1,20 +1,38 @@
 smp3App.service('PlaylistService', ['store', function (store) {
         var $this = this;
-        
-        this.pointer = 0;
-        this.queue = [];
-        
+
+        this.bindScope = function (scope) {
+            $this.scope = scope;
+            $this.scope.queue = [];
+            $this.scope.pointer = 0;
+        };
+
+
+        this.empty = function () {
+            return $this.scope.queue.length == 0;
+        };
+
         this.enqueue = function (file) {
-            $this.queue.push(file);
+            $this.scope.queue.push(file);
         };
 
         this.clear = function () {
-            $this.queue = [];
-            $this.pointer=0;
+            $this.scope.queue = [];
+            $this.scope.pointer = 0;
+        };
+
+        this.getCurrent = function () {
+            return $this.scope.queue[$this.scope.pointer];
         };
         
-        this.getFile = function () {
-             
+        this.hasNext = function () {
+          return $this.scope.pointer+1<$this.scope.queue.length;  
         };
+        
+        this.next = function () {
+            $this.scope.pointer++;
+            return $this.getCurrent();
+        };
+
 
     }]);
