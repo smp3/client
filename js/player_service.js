@@ -14,6 +14,7 @@ smp3App.service('PlayerService', ['ngAudio', 'store', 'PlaylistService', functio
 
         this.stop = function () {
             $this.sound.stop();
+            $this.scope.current_file = null;
         };
 
         this.playCurrent = function () {

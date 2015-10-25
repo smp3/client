@@ -42,7 +42,7 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
         $scope.play = function (file) {
             player.play(file);
         };
-        
+
         $scope.enqueue = function (file) {
             playlist.enqueue(file);
         };
@@ -56,10 +56,10 @@ Smp3Controllers.controller('Smp3PlayerCtrl', ['$scope', '$http', 'ngAudio', 'sto
     function ($scope, $http, ngAudio, store, player, playlist) {
         $scope.current_file = null;
         $scope.play = function () {
-            if(!$scope.current_file) {
+            if (!$scope.current_file && !playlist.empty()) {
                 player.play(playlist.getCurrent());
             } else {
-            player.playCurrent();
+                player.playCurrent();
             }
         };
 
@@ -86,7 +86,9 @@ Smp3Controllers.controller('Smp3ConfigCtrl', ['$scope', '$location', '$http', 's
 
 Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlaylistService',
     function ($scope, $location, $http, store, playlist) {
-        
         playlist.bindScope($scope);
-        
+        $scope.play = function (index) {
+            
+        };
+
     }]);

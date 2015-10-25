@@ -15,7 +15,7 @@
 <h2>Playlist</h2>
 <div class="playlist" ng-controller="Smp3PlaylistCtrl">
     <ul>
-     <li ng-repeat="item in queue track by $index">
+     <li ng-repeat="item in queue track by $index" ng-class="{current: $index==pointer}">
          {{item.file_name}} <button>Delete</button>
      </li>
     </ul>
