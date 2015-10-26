@@ -90,7 +90,8 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
         $scope.play = function (index) {
             player.stop();
             playlist.setPointer(index);
-            player.setCurrent(playlist.getCurrent());
+            player.play(playlist.getCurrent());
+            
         };
 
     }]);
