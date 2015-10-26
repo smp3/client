@@ -84,11 +84,13 @@ Smp3Controllers.controller('Smp3ConfigCtrl', ['$scope', '$location', '$http', 's
 
     }]);
 
-Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlaylistService',
-    function ($scope, $location, $http, store, playlist) {
+Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlayerService','PlaylistService',
+    function ($scope, $location, $http, store, player, playlist) {
         playlist.bindScope($scope);
         $scope.play = function (index) {
-            
+            player.stop();
+            playlist.setPointer(index);
+            player.setCurrent(playlist.getCurrent());
         };
 
     }]);
