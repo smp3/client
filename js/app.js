@@ -5,6 +5,7 @@ var smp3App = angular.module('smp3App', [
     'angular-jwt',
     'angular-storage',
     'ngAudio',
+    'angular-blocks',
     'Smp3Controllers',
 ]).config(function Config($httpProvider, jwtInterceptorProvider) {
     jwtInterceptorProvider.tokenGetter = ['myService', function (myService) {

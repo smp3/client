@@ -1,18 +1,11 @@
+<h2>
+    Library
+</h2>
 <button ng-click="discover()">Discover</button>
-<div class="library">
-    <ul>
-        <li ng-repeat="item in library">
-            {{item.id}} - {{item.file_name}}
-            <button ng-click="play(item)">
-                Play
-            </button>
-            <button ng-click="enqueue(item)">
-                Enqueue
-            </button>
-        </li>
-    </ul>
-</div>
-<h2>Playlist</h2>
+<div class="library" ng-include="'partials/file_list.html'"></div>    
+<h2>
+    Playlist
+</h2>
 <div class="playlist" ng-controller="Smp3PlaylistCtrl">
     <ul>
         <li ng-repeat="item in queue track by $index" 
