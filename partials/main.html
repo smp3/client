@@ -10,9 +10,9 @@
     <ul>
         <li ng-repeat="item in queue track by $index" 
             ng-class="{current: $index==pointer}"
-            ng-click="play($index)"
             >
-            {{item.file_name}} <button>Delete</button>
+            <span  ng-click="play($index)">{{item.file_name}}</span> 
+            <button ng-click="delete($index)">Delete</button>
         </li>
     </ul>
 </div>

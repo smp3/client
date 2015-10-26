@@ -93,5 +93,9 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             player.play(playlist.getCurrent());
             
         };
+        
+        $scope.delete = function(index) {
+            playlist.delete(index);
+        }
 
     }]);
