@@ -1,8 +1,10 @@
+<div id="menu" ng-include="'partials/top_bar.html'">
+    
+</div>
 <div id="upper-container">
     <div id="library-container">
         <h2>
-            Library <button ng-click="discover()">Discover</button>
-            <button ng-click="logout()">Logout</button>
+            Library 
         </h2>
         Search: <input ng-model="searchLibrary" />
         <div id="library" ng-include="'partials/library.html'"></div>    
