@@ -1,25 +1,19 @@
-<div id="library-container">
-    <h2>
-        Library <button ng-click="discover()">Discover</button>
-    </h2>
-    <div id="library" ng-include="'partials/file_list.html'"></div>    
-</div>
-<div id="playlist-container">
-    <h2>
-        Playlist
-    </h2>
-    <div id="playlist" ng-controller="Smp3PlaylistCtrl">
-        <ul>
-            <li ng-repeat="item in queue track by $index" 
-                ng-class="{current: $index==pointer}"
-                >
-                <span  ng-click="play($index)">{{item.file_name}}</span> 
-                <button ng-click="delete($index)">Delete</button>
-            </li>
-        </ul>
+<div id="upper-container">
+    <div id="library-container">
+        <h2>
+            Library <button ng-click="discover()">Discover</button>
+        </h2>
+        <div id="library" ng-include="'partials/library.html'"></div>    
+    </div>
+    <div id="playlist-container">
+        <h2>
+            Playlist
+        </h2>
+        <div id="playlist" ng-include="'partials/playlist.html'" ng-controller="Smp3PlaylistCtrl"></div>
     </div>
 </div>
-<div id="player" ng-controller="Smp3PlayerCtrl">
+<div class="clearfix"></div>
+<div id="player" ng-controller="Smp3PlayerCtrl" class="clearfix">
     <div>
         Now playing: 
         <span ng-show="current_file">

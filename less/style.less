@@ -1,32 +1,43 @@
-.playlist .current {
-    background-color: yellow;
-}
-
-#library-container {     
-    width: 50%;
-    float: left;
-    height: 500px; 
-    overflow: hidden;
-}
-
-#library {
+html, body {
     width: 100%;
     height: 100%;
-    overflow: auto;
 }
-
-#playlist-container {
-  width: 50%;
-  float: right;
-}
-
-#playlist {
+.view-container {
     width: 100%;
+    height: 100%;
+    .view-frame {
+        width: 100%;
+        height: 100%;
+        #upper-container {
+            height: 600px; 
+            clear: both;
+            #library-container {     
+                width: 45%;
+                float: left;
+                height: 520px;
+                #library {
+                    width: 100%;
+                    height: 520px;
+                    overflow: auto;
+                }
+            }
+
+            #playlist-container {
+                width: 45%;
+                float: left;
+                height: 100%;
+                #playlist {
+                    width: 100%;
+                    .current {
+                        background-color: yellow;
+                    }
+                }
+            }
+        }
+
+        #player {
+            clear: both;
+        }
+    }
 }
 
-#player {
-    clear: both;
-}
-.view-frame {
-    hegiht: 100%;
-}

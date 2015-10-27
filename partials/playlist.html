@@ -1,0 +1,43 @@
+<!-- <ul>
+    <li ng-repeat="item in queue track by $index" 
+        ng-class="{current: $index==pointer}"
+        >
+        <span  ng-click="play($index)">{{item.file_name}}</span> 
+        <button ng-click="delete($index)">Delete</button>
+    </li>
+</ul>-->
+
+<table width="100%" border="1">
+    <thead>
+        <tr>
+            <th>
+                Artist
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Album
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in queue track by $index">
+            <td>
+                {{item.info.artist}}
+            </td>
+            <td>
+                {{item.info.title}}
+            </td>
+            <td>
+                {{item.info.album}}
+            </td>
+            <td>
+                <button ng-click="delete($index)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
