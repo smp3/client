@@ -1,3 +1,4 @@
+Search: <input ng-model="searchLibrary" />
 <table width="100%" border="1">
     <thead>
         <tr>
@@ -19,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in library">
+        <tr ng-repeat="item in library | filter:searchLibrary">
             <td>
                 {{item.info.artist}}
             </td>
