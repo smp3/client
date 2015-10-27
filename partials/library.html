@@ -1,4 +1,4 @@
-Search: <input ng-model="searchLibrary" />
+
 <table width="100%" border="1">
     <thead>
         <tr>
@@ -34,12 +34,8 @@ Search: <input ng-model="searchLibrary" />
                 {{item.info.track_number}}
             </td>
             <td>
-                <button ng-click="play(item)">
-                    Play
-                </button>
-                <button ng-click="enqueue(item)">
-                    Enqueue
-                </button>
+                <button ng-click="play(item)" class="fa fa-play"></button>
+                <button ng-click="enqueue(item)" class="fa fa-play-circle"></button>
             </td>
         </tr>
     </tbody>

@@ -15,6 +15,7 @@
     "ui-router": "~0.2.11",
     "angular-audio": "*",
     "angular-blocks": "~0.1.9",
-    "jquery": "*"
+    "jquery": "*",
+    "components-font-awesome": "*"
   }
 }

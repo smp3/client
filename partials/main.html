@@ -4,6 +4,7 @@
             Library <button ng-click="discover()">Discover</button>
             <button ng-click="logout()">Logout</button>
         </h2>
+        Search: <input ng-model="searchLibrary" />
         <div id="library" ng-include="'partials/library.html'"></div>    
     </div>
     <div id="playlist-container">
@@ -24,13 +25,7 @@
             ---
         </span>
     </div>
-    <button ng-click="play()">
-        Play
-    </button>
-    <button ng-click="pause()">
-        Pause
-    </button>
-    <button ng-click="stop()">
-        Stop
-    </button>
+    <button ng-click="play()" class="fa fa-play"></button>
+    <button ng-click="pause()" class="fa fa-pause"></button>
+    <button ng-click="stop()" class="fa fa-stop"></button>
 </div>
