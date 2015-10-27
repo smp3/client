@@ -15,7 +15,7 @@ var smp3App = angular.module('smp3App', [
 
     $httpProvider.interceptors.push('jwtInterceptor');
 }).config(function Config($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['config', function (config) {
+    jwtInterceptorProvider.tokenGetter = ['config', 'store', '$location', function (config, store, $location) {
 
             if (config.url.substr(config.url.length - 5) == '.html') {
                 return null;
@@ -26,10 +26,16 @@ var smp3App = angular.module('smp3App', [
 
     $httpProvider.interceptors.push('jwtInterceptor');
 }).config(function ($httpProvider) {
-    $httpProvider.interceptors.push(function ($q) {
+    $httpProvider.interceptors.push(function ($q, $location) {
         return {
-            'request': function (config) {
-                var sconfig =angular.fromJson(localStorage.getItem('config'));
+            'responseError': function (rejection) {
+                if (rejection.status == 401) {
+                    $location.path('/login');
+                }
+                return $q.reject(rejection);
+            },
+            'request': function (config, store, $location) {
+                var sconfig = angular.fromJson(localStorage.getItem('config'));
                 if (config.url.substr(config.url.length - 5) != '.html') {
                     config.url = sconfig.server_url + config.url;
                 }
@@ -56,7 +62,5 @@ smp3App.config(['$routeProvider',
                 when('/', {
                     templateUrl: 'partials/main.html',
                     controller: 'Smp3MainCtrl'
-                })
-
-                ;
+                });
     }]);

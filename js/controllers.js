@@ -6,13 +6,24 @@ var Smp3Controllers = angular.module('Smp3Controllers', [
 
 ]);
 
-Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store',
-    function ($scope, $http, store) {
+Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store', '$location',
+    function ($scope, $http, store, $location) {
         $scope.login = function (user) {
             console.log('login', user);
             $http.post('/api/login_check', user).then(function (response) {
-                console.log(response.data);
-                store.set('jwt', response.data.token);
+                console.log('Repsonse', response);
+                if (response.status = 200 && response.data.token) {
+                    store.set('jwt', response.data.token);
+                    $location.path('/');
+                }
+            }, function (response) {
+                console.log(response);
+                if (response.status == 401) {
+                    $scope.error = response.data;
+                } else {
+                    $scope.error = 'Unexpected error, code: ' + response.status
+                }
+
             });
         };
     }]);
@@ -31,6 +42,11 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
             $http.get('/api/discover').success(function (data) {
                 $scope.getLibrary();
             });
+        };
+
+        $scope.logout = function () {
+            console.log('logout');
+            store.set('jwt', '');
         };
 
         $scope.getLibrary = function () {
@@ -84,17 +100,17 @@ Smp3Controllers.controller('Smp3ConfigCtrl', ['$scope', '$location', '$http', 's
 
     }]);
 
-Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlayerService','PlaylistService',
+Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlayerService', 'PlaylistService',
     function ($scope, $location, $http, store, player, playlist) {
         playlist.bindScope($scope);
         $scope.play = function (index) {
             player.stop();
             playlist.setPointer(index);
             player.play(playlist.getCurrent());
-            
+
         };
-        
-        $scope.delete = function(index) {
+
+        $scope.delete = function (index) {
             playlist.delete(index);
         }
 
