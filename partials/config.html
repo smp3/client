@@ -1,4 +1,5 @@
-<div>
+<div id="menu" ng-include="'partials/top_bar.html'"></div>
+<div id="inner">
     Server url: <input type="text" ng-model="config.server_url" />
     <input type="button"  ng-click="saveConfig(config)" value="OK">
 </div>

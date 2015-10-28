@@ -6,48 +6,52 @@ body {
     .view-container {
         width: 100%;
         height: 100%;
-/*         padding: 5px;*/
+
         .view-frame {
             width: 100%;
             height: 100%;
-            #upper-container {
-                height: 650px; 
-                clear: both;
-                #library-container {     
-                    width: 45%;
-                    float: left;
-                    height: 520px;
-                    #library {
-                        width: 100%;
+            #inner {
+                padding: 12px;
+                #upper-container {
+                    height: 650px; 
+                    clear: both;
+                    #playlist-container, #library-container {     
+                        width: 45%;
+                        float: left;
                         height: 520px;
-                        overflow: auto;
+                        position: relative;
+                        .top-container {
+                            height: 50px; 
+                        }
+                        #playlist, #library {
+                            width: 100%;
+                            height: 520px;
+                            overflow: auto;
+                        }
                     }
-                }
 
-                #playlist-container {
-                    width: 45%;
-                    float: left;
-                    height: 100%;
-                    #playlist {
-                        width: 100%;
-                        table {
-                            .noselect();
-                            tr {
+                    #playlist-container {
+                        margin-left: 5%;
+                        #playlist {
+                            table {
                                 .noselect();
-                                td {
+                                tr {
                                     .noselect();
+                                    td {
+                                        .noselect();
+                                    }
                                 }
                             }
-                        }
-                        .current {
-                            background-color: yellow;
+                            .current {
+                                background-color: yellow;
+                            }
                         }
                     }
                 }
-            }
 
-            #player {
-                clear: both;
+                #player {
+                    clear: both;
+                }
             }
         }
     }

@@ -1,18 +1,25 @@
 <div id="menu" ng-include="'partials/top_bar.html'"></div>
-<div id="upper-container">
-    <div id="library-container">
-        <h2>
-            Library 
-        </h2>
-        Search: <input ng-model="searchLibrary" />
-        <div id="library" ng-include="'partials/library.html'"></div>    
+<div id="inner">
+    <div id="upper-container">
+        <div id="library-container">
+            <h2>
+                Library 
+            </h2>
+            <div class="top-container">
+                Search: <input ng-model="searchLibrary" />
+            </div>
+            <div id="library" ng-include="'partials/library.html'"></div>    
+        </div>
+        <div id="playlist-container">
+            <h2>
+                Playlist
+            </h2>
+            <div class="top-container">
+            </div>
+            
+            <div id="playlist" ng-include="'partials/playlist.html'" ng-controller="Smp3PlaylistCtrl"></div>
+        </div>
     </div>
-    <div id="playlist-container">
-        <h2>
-            Playlist
-        </h2>
-        <div id="playlist" ng-include="'partials/playlist.html'" ng-controller="Smp3PlaylistCtrl"></div>
-    </div>
+    <div class="clearfix"></div>
+    <div id="player" ng-controller="Smp3PlayerCtrl" class="clearfix" ng-include="'partials/player.html'"></div>
 </div>
-<div class="clearfix"></div>
-<div id="player" ng-controller="Smp3PlayerCtrl" class="clearfix" ng-include="'partials/player.html'"></div>
