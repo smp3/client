@@ -1,6 +1,4 @@
-<div id="menu" ng-include="'partials/top_bar.html'">
-    
-</div>
+<div id="menu" ng-include="'partials/top_bar.html'"></div>
 <div id="upper-container">
     <div id="library-container">
         <h2>
@@ -17,17 +15,4 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<div id="player" ng-controller="Smp3PlayerCtrl" class="clearfix">
-    <div>
-        Now playing: 
-        <span ng-show="current_file">
-            {{current_file.info.artist}} - {{current_file.info.title}}
-        </span>
-        <span ng-hide="current_file">
-            ---
-        </span>
-    </div>
-    <button ng-click="play()" class="fa fa-play"></button>
-    <button ng-click="pause()" class="fa fa-pause"></button>
-    <button ng-click="stop()" class="fa fa-stop"></button>
-</div>
+<div id="player" ng-controller="Smp3PlayerCtrl" class="clearfix" ng-include="'partials/player.html'"></div>

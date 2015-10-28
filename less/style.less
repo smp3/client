@@ -1,4 +1,5 @@
 @import 'tables';
+@import 'common'; 
 
 body {
     margin: 0;
@@ -29,6 +30,15 @@ body {
                     height: 100%;
                     #playlist {
                         width: 100%;
+                        table {
+                            .noselect();
+                            tr {
+                                .noselect();
+                                td {
+                                    .noselect();
+                                }
+                            }
+                        }
                         .current {
                             background-color: yellow;
                         }

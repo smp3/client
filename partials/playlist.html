@@ -15,9 +15,9 @@
             </th>
         </tr>
     </thead>
-    <tbody>
-        <tr ng-repeat="item in queue track by $index">
-            <td>
+    <tbody ng-drop="true" >
+        <tr ng-repeat="item in queue track by $index" >
+            <td  ng-drag="true">
                 {{item.info.artist}}
             </td>
             <td>

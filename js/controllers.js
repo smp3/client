@@ -47,6 +47,7 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
         $scope.logout = function () {
             console.log('logout');
             store.set('jwt', '');
+            $location.path('/login');
         };
 
         $scope.getLibrary = function () {
@@ -107,11 +108,10 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             player.stop();
             playlist.setPointer(index);
             player.play(playlist.getCurrent());
-
         };
 
         $scope.delete = function (index) {
             playlist.delete(index);
-        }
+        };
 
     }]);

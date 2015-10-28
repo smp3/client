@@ -16,6 +16,7 @@
     "angular-audio": "*",
     "angular-blocks": "~0.1.9",
     "jquery": "*",
-    "components-font-awesome": "*"
+    "components-font-awesome": "*",
+    "ngDraggable": "*"
   }
 }
