@@ -1,0 +1,6 @@
+<ul>
+    <li ng-repeat="playlist in playlists" ng-click="setCurrentPlaylist(playlist)">
+        {{playlist.title}}
+    </li>
+</ul>
+<div id="playlist" ng-include="'partials/playlist.html'" ></div>     
