@@ -65,3 +65,8 @@ smp3App.config(['$routeProvider',
                     controller: 'Smp3MainCtrl'
                 });
     }]);
+
+var Smp3Controllers = angular.module('Smp3Controllers', [
+    'angular-storage'
+
+]);
