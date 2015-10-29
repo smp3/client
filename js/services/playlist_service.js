@@ -20,6 +20,12 @@ smp3App.service('PlaylistService', ['store', function (store) {
             $this.scope.queue = [];
             $this.scope.pointer = 0;
         };
+        
+        this.setQueue = function (queue) {
+            $this.clear();
+            $this.queue = queue;
+            
+        };
 
         this.getCurrent = function () {
             return $this.scope.queue[$this.scope.pointer];

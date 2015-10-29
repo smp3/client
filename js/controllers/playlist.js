@@ -1,7 +1,7 @@
 Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlayerService', 'PlaylistService',
     function ($scope, $location, $http, store, player, playlist) {
         playlist.bindScope($scope);
-
+        $scope.playlists = [];
         $scope.getPlaylists = function () {
             console.log('playlists');
             $http.get('/api/playlists').success(function (data) {
@@ -19,9 +19,20 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             playlist.delete(index);
         };
 
-        $scope.setCurrentPlaylist = function(playlist) {
-            $scope.queue = playlist;
-            console.log('Current playlist', playlist);
+        $scope.newPlaylist = function () {
+            console.log('newPlaylist');
+            var new_playlist = {
+                title: 'title',
+                playlist_files: []
+            };
+            $scope.playlists.push(new_playlist);
+            $scope.setCurrentPlaylist(new_playlist);
+            
+        };
+        
+        $scope.setCurrentPlaylist = function(current_playlist) {
+            playlist.setQueue(current_playlist.playlist_files);
+            console.log('Current playlist', current_playlist);
         };
 
         $scope.getPlaylists();

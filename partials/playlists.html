@@ -1,6 +1,9 @@
+<button ng-click="newPlaylist()">
+    New
+</button>
 <ul>
     <li ng-repeat="playlist in playlists" ng-click="setCurrentPlaylist(playlist)">
-        {{playlist.title}}
+        <input ng-model="playlist.title" /> <button>Save</button>
     </li>
 </ul>
 <div id="playlist" ng-include="'partials/playlist.html'" ></div>     
