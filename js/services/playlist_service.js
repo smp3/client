@@ -22,7 +22,7 @@ smp3App.service('PlaylistService', ['store', function (store) {
         };
         
         this.setQueue = function (queue) {
-            $this.clear();
+            //$this.clear();
             $this.queue = queue;
             
         };
