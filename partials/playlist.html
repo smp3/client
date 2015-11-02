@@ -17,15 +17,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in queue track by $index">
+        <tr ng-repeat="item in current_playlist.playlist_files track by $index">
             <td>
-                {{item.info.artist}}
+                {{item.file.info.artist}}
             </td>
             <td>
-                {{item.track_title}}
+                {{item.file.info.title}}
             </td>
             <td>
-                {{item.info.album}}
+                {{item.file.info.album}}
             </td>
             <td>
                 <button ng-click="play($index)" class="fa fa-play"></button>
