@@ -37,17 +37,26 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
 
         $scope.savePlaylist = function (playlist) {
             console.log('savePlaylist', playlist);
-            if (playlist.id) {
-                console.log('PUT');
-            } else {
-                $http.post('/api/playlists', {'playlist':playlist}).then(function (response) {
-                    console.log('Repsonse', response);
-                    
-                }, function (response) {
-                    console.log('Repsonse', response);
-
-                });
+            var url, method;
+            if (playlist.id) { //PUT
+                url = '/api/' + playlist.id + '/playlist';
+                method = 'PUT';
+            } else { //POST
+                url = '/api/playlists';
+                method = 'POST';
             }
+
+            $http({
+                url: url,
+                method: method,
+                data: {'playlist': playlist}
+            }).then(function (response) {
+                console.log('Repsonse', response);
+
+            }, function (response) {
+                console.log('Repsonse', response);
+
+            });
         };
 
         $scope.getPlaylists();
