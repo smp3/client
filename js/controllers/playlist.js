@@ -52,12 +52,30 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
                 data: {'playlist': playlist}
             }).then(function (response) {
                 console.log('Repsonse', response);
+                $scope.getPlaylists();
 
             }, function (response) {
                 console.log('Repsonse', response);
 
             });
+            
         };
+
+        $scope.deletePlaylist = function (playlist_id) {
+            $http({
+                url: '/api/' + playlist_id + '/playlist',
+                method: 'DELETE'
+            }).then(
+                    function (response) {
+                        console.log('Response', response);
+                        $scope.getPlaylists();
+                    },
+                    function (response) {
+                        console.log('Response', response);
+                    }
+            );
+        }
+
 
         $scope.getPlaylists();
 
