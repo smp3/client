@@ -18,6 +18,7 @@
     "jquery": "*",
     "components-font-awesome": "*",
     "ngDraggable": "*",
-    "angular-translate": "*"
+    "angular-translate": "*",
+    "less.js": "*"
   }
 }
