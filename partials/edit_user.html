@@ -1,12 +1,42 @@
 <div id="menu" ng-include="'partials/top_bar.html'"></div>
 <div id="inner" ng-init="getUser()">
-    <form>
-        Username: <input ng-model="user.username" /><br />
-        Email: <input ng-model="user.email" /><br />
-        Working directory: <input ng-model="user.path" /><br />
-        Password: <input ng-model="user.password1" /><br />
-        Repeat password: <input ng-model="user.password2" /><br />
-        <button ng-click="saveUser(user)">Save</button>
-        
-    </form>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form>
+                <div class="input-group">
+                    <span class="input-group-addon">Username</span>
+                    <input type="text" class="form-control" ng-model="user.username" placeholder="" />
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">Email</span>
+                    <input type="text" class="form-control" ng-model="user.email" placeholder="" />
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon"> Working directory</span>
+                    <input type="text" class="form-control" ng-model="user.path" placeholder="" />
+                </div>
+
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon">Password</span>
+                            <input type="password" class="form-control" ng-model="user.password1" placeholder="" />
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-group-addon">Repeat password</span>
+                            <input type="password" class="form-control" ng-model="user.password2" placeholder="" />
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-click="saveUser(user)">Save</button>
+
+            </form>
+        </div>
+    </div>
+
 </div>

@@ -1,5 +1,27 @@
 <div id="menu" ng-include="'partials/top_bar.html'"></div>
 <div id="inner">
-    Server url: <input type="text" ng-model="config.server_url" />
-    <input type="button"  ng-click="saveConfig(config)" value="OK">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form>
+                <div class="input-group">
+                    <span class="input-group-addon" id="url">Server url</span>
+                    <input type="text" class="form-control" ng-model="config.server_url" 
+                           placeholder="" aria-describedby="url">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" >LastFM login</span>
+                    <input type="text" ng-model="config.lastfm_username" class="form-control" placeholder="" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" >LastFM Password</span>
+                    <input type="password" ng-model="config.lastfm_password" class="form-control" placeholder="" >
+                </div>
+                <br />
+                <button  ng-click="saveConfig(config)" type="button" class="btn btn-primary">
+                    Save
+                </button>
+
+            </form>
+        </div>
+    </div>
 </div>
