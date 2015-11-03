@@ -12,7 +12,8 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
         $scope.play = function (index) {
             player.stop();
             playlist.setPointer(index);
-            player.play(playlist.getCurrent());
+//            console.log(playlist.getCurrent());
+            player.play(playlist.getCurrent().file);
         };
 
         $scope.delete = function (index) {
