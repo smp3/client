@@ -38,7 +38,7 @@ smp3App.service('PlaylistService', ['store', function (store) {
 
         this.next = function () {
             $this.scope.pointer++;
-            return $this.getCurrent();
+            return $this.getCurrent().file;
         };
 
         this.setPointer = function (index) {

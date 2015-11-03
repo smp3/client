@@ -18,6 +18,12 @@
             </tr>
         </thead>
         <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.path}}</td>
+            </tr>
         </tbody>
     </table>
 </div>
