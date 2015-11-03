@@ -1,5 +1,7 @@
 Smp3Controllers.controller('Smp3UsersCtrl', ['$scope', '$location', '$http', 'store', '$routeParams',
     function ($scope, $location, $http, store, $routeParams) {
+        $scope.$location = $location;
+         
         $scope.getAllUsers = function () {
             $http.get('/api/user/all').success(function (data) {
                 $scope.users = data;
