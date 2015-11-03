@@ -17,6 +17,7 @@
     "angular-blocks": "~0.1.9",
     "jquery": "*",
     "components-font-awesome": "*",
-    "ngDraggable": "*"
+    "ngDraggable": "*",
+    "angular-translate": "*"
   }
 }

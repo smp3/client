@@ -1,8 +1,18 @@
-<div ng-controller="Smp3LoginCtrl">
-    <form novalidate class="login-form">
-        Login: <input type="text" value="" name="_username" ng-model="user._username" /><br />
-        Password: <input type="text" value="" name="_password" ng-model="user._password"/><br />
-        <div>{{error}}</div>
-        <input type="button" ng-click="login(user)" value="Login">
-    </form>
+<div ng-controller="Smp3LoginCtrl" class="login-container"> 
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form novalidate class="login-form">
+                <div class="input-group">
+                    <span class="input-group-addon" id="login">Username</span>
+                    <input type="text" class="form-control" ng-model="user._username" placeholder="" aria-describedby="login">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="password">Password</span>
+                    <input type="password" class="form-control" ng-model="user._password" placeholder="" aria-describedby="password">
+                </div>
+                <div>{{error}}</div>
+                <button type="button" class="btn btn-primary pull-right" ng-click="login(user)">Login</button>
+            </form>
+        </div>
+    </div>
 </div>
