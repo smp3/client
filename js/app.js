@@ -68,6 +68,10 @@ smp3App.config(['$routeProvider',
                     templateUrl: 'partials/edit_user.html',
                     controller: 'Smp3UsersCtrl'
                 }).
+                when('/user/new', {
+                    templateUrl: 'partials/edit_user.html',
+                    controller: 'Smp3UsersCtrl'
+                }).
                 when('/', {
                     templateUrl: 'partials/main.html',
                     controller: 'Smp3MainCtrl'
