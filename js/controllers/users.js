@@ -6,6 +6,6 @@ Smp3Controllers.controller('Smp3UsersCtrl', ['$scope', '$location', '$http', 'st
             });
         };
         
-        $scope.getAllUsers();
+        //$scope.getAllUsers();
 
     }]);
