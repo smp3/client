@@ -3,6 +3,8 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
     function ($scope, $location, $http, ngAudio, store, player, playlist) {
 
         var config = store.get('config');
+        
+        $scope.mode = 'library';
 
         if (!config) {
             $location.path('/config');
