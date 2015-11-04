@@ -42,7 +42,7 @@ smp3App.service('PlayerService', ['ngAudio', 'store', 'PlaylistService', functio
             token = store.get('jwt');
             config = store.get('config');
             console.log('config', config);
-            $this.sound = ngAudio.load(config.server_url + '/api/' + file.id + '/stream.json?token=' + token);
+            $this.sound = ngAudio.load(config.server_url + '/api/stream/'+file.id+'?token=' + token);
 
 
 
