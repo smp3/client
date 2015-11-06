@@ -6,7 +6,6 @@ smp3App.service('DiscogsService', ['$http', 'store', 'ConfigService', function (
         };
 
         this.initialize = function () {
-            // store.config.excempt_urls
             config.addExcemptUrl('https://api.discogs.com');
         };
 
