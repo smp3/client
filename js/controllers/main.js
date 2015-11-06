@@ -1,12 +1,15 @@
-Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngAudio', 'store', 'PlayerService',
+Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$httpParamSerializer', 'ngAudio', 'store', 'PlayerService',
     'PlaylistService',
-    function ($scope, $location, $http, ngAudio, store, player, playlist) {
+    function ($scope, $location, $http, $httpParamSerializer, ngAudio, store, player, playlist) {
 
         var config = store.get('config');
 
         if (!config) {
             $location.path('/config');
         }
+
+        $scope.artist = null;
+        $scope.album = null;
 
         $scope.discover = function () {
             $http.get('/api/discover').success(function (data) {
@@ -20,8 +23,51 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', 'ngA
             $location.path('/login');
         };
 
+        $scope.setArtist = function (artist) {
+            $scope.artist = artist;
+            $scope.getLibrary();
+        };
+
+        $scope.setAlbum = function (album) {
+            $scope.album = album;
+            console.log(album);
+            $scope.getLibrary();
+        };
+
         $scope.getLibrary = function () {
-            $http.get('/api/library').success(function (data) {
+            var
+                    library_url = '/api/library',
+                    artists_url = '/api/library/artists',
+                    albums_url = '/api/library/albums'
+                    ;
+
+            var params = {};
+
+            if ($scope.artist) {
+                params['artist'] = $scope.artist.name;
+            }
+
+            if ($scope.album) {
+                params['album'] = $scope.album.title;
+            }
+
+            var serialized_params = $httpParamSerializer(params);
+
+
+            library_url += '?' + serialized_params;
+            artists_url += '?' + serialized_params;
+            albums_url += '?' + serialized_params;
+
+
+            $http.get(artists_url).success(function (data) {
+                $scope.artists = data;
+            });
+
+            $http.get(albums_url).success(function (data) {
+                $scope.albums = data;
+            });
+
+            $http.get(library_url).success(function (data) {
                 $scope.library = data;
             });
         };
