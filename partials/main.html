@@ -1,21 +1,30 @@
 <div id="menu" ng-include="'partials/top_bar.html'"></div>
 <div id="inner">
+    <div id="tabs">
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: mode=='library'}">
+                <a ng-click="mode='library'">
+                    Library
+                </a>
+            </li>
+            <li ng-class="{active: mode=='playlist'}">
+                <a ng-click="mode='playlist'">
+                    Playlists
+                </a>
+            </li>
+        </ul>
+    </div>
     <div id="upper-container">
         <div ng-include="'partials/artist_info.html'">
         </div>
-        <div id="library-container">
-            <h2>
-                Library 
-            </h2>
+       
+        <div id="library-container" ng-if="mode=='library'">
             <div class="top-container">
                 Search: <input ng-model="searchLibrary" />
             </div>
             <div id="library" ng-include="'partials/library.html'"></div>    
         </div>
-        <div id="playlist-container">
-            <h2>
-                Playlists
-            </h2>
+        <div id="playlist-container" ng-if="mode=='playlist'">
             <div class="top-container">
             </div>
             

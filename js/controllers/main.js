@@ -5,6 +5,8 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
 
         
         var config = store.get('config');
+        
+        $scope.mode = 'library';
 
         if (!config) {
             $location.path('/config');
