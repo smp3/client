@@ -1,0 +1,20 @@
+<div ng-controller="Smp3InfoCtrl">
+    <h2>
+        {{artist.name}}
+    </h2>
+    <div>
+        <img src="{{artist.additional.thumb}}" />
+    </div>
+    <div>
+        {{artist.profile}}
+    </div>
+    <h3>
+        Members
+    </h3>
+    <ul>
+        <li ng-repeat="member in artist.members">
+            {{member.name}} <span ng-if="!member.active">(past)</span>
+        </li>
+    </ul>
+    <a href="{{artist.uri}}" target="_blank">{{artist.uri}}</a>
+</div>
