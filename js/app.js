@@ -1,5 +1,14 @@
 'use strict';
 
+var hasUrl = function (urls, url) {
+    for(var i in urls) {
+        if(url.indexOf(urls[i])!==-1) {
+            return true;
+        }
+    }
+    return false;
+};
+
 var smp3App = angular.module('smp3App', [
     'ngRoute',
     'angular-jwt',
@@ -37,7 +46,10 @@ var smp3App = angular.module('smp3App', [
             },
             'request': function (config, store, $location) {
                 var sconfig = angular.fromJson(localStorage.getItem('config'));
-                if (config.url.substr(config.url.length - 5) != '.html') {
+               // console.log('exc', sconfig.excempt_urls);
+                if (config.url.substr(config.url.length - 5) != '.html'
+                        && !hasUrl(sconfig.excempt_urls, config.url)
+                        ) {
                     config.url = sconfig.server_url + config.url;
                 }
 
