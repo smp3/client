@@ -8,13 +8,10 @@ smp3App.service('DiscogsService', ['$http', 'store', 'ConfigService', function (
         this.initialize = function () {
             // store.config.excempt_urls
             config.addExcemptUrl('https://api.discogs.com');
-            var cfg = store.get('config');
-            console.log('cfg', cfg);
         };
 
         this.hasConfig = function () {
             var cfg = store.get('config');
-            console.log(cfg);
             return cfg.discogs_key && cfg.discogs_secret;
         };
 
@@ -33,11 +30,17 @@ smp3App.service('DiscogsService', ['$http', 'store', 'ConfigService', function (
             $http.jsonp(resource_url + '?callback=JSON_CALLBACK').then(function (data) {
                 $this.scope.artist = data.data.data;
                 $this.scope.artist.additional = additional;
+                $this.getReleases(data.data.data.releases_url);
+            });
+        };
+
+        this.getReleases = function (resource_url) {
+            $http.jsonp(resource_url + '?callback=JSON_CALLBACK').then(function (data) {
+                $this.scope.artist.releases = data.data.data.releases; 
             });
         };
 
         this.biggestShared = function (artists, str) {
-            var max_sh = 0, sh;
 
             for (i in artists) {
                 if (artists[i].title.toLowerCase() === str.toLowerCase()) {
