@@ -10,6 +10,10 @@
                     <span class="input-group-addon" id="password">Password</span>
                     <input type="password" class="form-control" ng-model="user._password" placeholder="" aria-describedby="password">
                 </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="url">Server url</span>
+                    <input type="text" class="form-control" ng-model="config.server_url" placeholder="" aria-describedby="url">
+                </div>
                 <div>{{error}}</div>
                 <button type="button" class="btn btn-primary pull-right" ng-click="login(user)">Login</button>
             </form>

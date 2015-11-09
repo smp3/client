@@ -16,7 +16,7 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
         $scope.album = null;
 
         $scope.discover = function () {
-            $http.get('/api/discover').success(function (data) {
+            $http.get('/api/library/discover').success(function (data) {
                 $scope.getLibrary();
             });
         };
