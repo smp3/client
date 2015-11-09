@@ -4,6 +4,8 @@ smp3App.service('PlayerService', ['ngAudio', 'store', 'PlaylistService', functio
         this.sound = null;
         this.scope = null;
 
+        
+        
         this.bindScope = function (scope) {
             $this.scope = scope;
         };

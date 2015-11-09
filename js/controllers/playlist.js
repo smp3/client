@@ -6,6 +6,9 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             console.log('playlists');
             $http.get('/api/playlists').success(function (data) {
                 $scope.playlists = data;
+                var new_playlist = playlist.makePlaylist('Default');
+                $scope.playlists.push(new_playlist);
+                playlist.setCurrent(new_playlist);
             });
         };
 
@@ -22,10 +25,11 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
 
         $scope.newPlaylist = function () {
             console.log('newPlaylist');
-            var new_playlist = {
-                title: 'title',
-                playlist_files: []
-            };
+//            var new_playlist = {
+//                title: 'title',
+//                playlist_files: []
+//            };
+            var new_playlist = playlist.makePlaylist('title');
             $scope.playlists.push(new_playlist);
             //$scope.setCurrentPlaylist(new_playlist);
 
@@ -59,7 +63,7 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
                 console.log('Repsonse', response);
 
             });
-            
+
         };
 
         $scope.deletePlaylist = function (playlist_id) {
@@ -75,9 +79,11 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
                         console.log('Response', response);
                     }
             );
-        }
+        };
+
 
 
         $scope.getPlaylists();
-
+  
+        
     }]);

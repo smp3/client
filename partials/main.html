@@ -4,6 +4,14 @@
     <div id="info"  ng-controller="Smp3InfoCtrl">
         <button ng-click="toggle()">Toggle</button>
         <div ng-show="visible">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a>Artist info</a>
+                </li>
+                <li>
+                    <a>Lyrics</a>
+                </li>
+            </ul>
             <div ng-include="'partials/artist_info.html'"></div>
         </div>
     </div>
@@ -23,11 +31,11 @@
         </ul>
     </div>
     <div id="upper-container">
-        <div id="library-container" ng-if="mode=='library'">
+        <div id="library-container" ng-show="mode=='library'">
             
             <div id="library" ng-include="'partials/library.html'"></div>    
         </div>
-        <div id="playlist-container" ng-if="mode=='playlist'">
+        <div id="playlist-container" ng-show="mode=='playlist'">
             <div class="top-container">
             </div>
 

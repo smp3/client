@@ -8,7 +8,14 @@ smp3App.service('PlaylistService', ['store', function (store) {
             $this.scope.current_playlist = null;
         };
 
-
+        this.makePlaylist = function(title) {
+             return {
+                title: title,
+                playlist_files: []
+            };
+            
+        };
+        
         this.empty = function () {
             return $this.scope.current_playlist.playlist_files.length == 0;
         };
