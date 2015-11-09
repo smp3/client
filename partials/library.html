@@ -1,69 +1,78 @@
-<table class="table table-hover table-bordered">
-    <tr>
-        <td>
-            <a ng-click="setArtist(null)">All</a>
-        </td>
-    </tr>
-    <tr ng-repeat="artist in artists">
-        <td>
-            <a ng-click="setArtist(artist)">
-                {{artist.name}}
-            </a>
-        </td>
-    </tr>
-</table>
-
-<table class="table table-hover table-bordered">
-    <tr>
-        <td>
-            <a ng-click="setAlbum(null)">All</a>
-        </td>
-    </tr>
-    <tr ng-repeat="album in albums">
-        <td>
-            <a ng-click="setAlbum(album)">{{album.title}}</a>
-        </td>
-    </tr>
-</table>
-
-<table class="table table-hover table-bordered">
-    <thead>
+<div id="library-artists">
+    <table class="table table-hover table-bordered" >
         <tr>
-            <th>
-                Artist
-            </th>
-            <th>
-                Title
-            </th>
-            <th>
-                Album
-            </th>
-            <th>
-                Track number
-            </th>
-            <th>
-                &nbsp;
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="item in library | filter:searchLibrary">
             <td>
-                {{item.info.artist}}
-            </td>
-            <td>
-                {{item.track_title}}
-            </td>
-            <td>
-                {{item.info.album}}
-            </td>
-            <td>
-                {{item.info.track_number}}
-            </td>
-            <td>
-                <button ng-click="play(item)" class="fa fa-play"></button>
-                <button ng-click="enqueue(item)" class="fa fa-play-circle"></button>
+                <a ng-click="setArtist(null)">All</a>
             </td>
         </tr>
-    </tbody>
-</table>
+        <tr ng-repeat="artist in artists">
+            <td>
+                <a ng-click="setArtist(artist)">
+                    {{artist.name}}
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div  id="library-albums">
+    <table class="table table-hover table-bordered">
+        <tr>
+            <td>
+                <a ng-click="setAlbum(null)">All</a>
+            </td>
+        </tr>
+        <tr ng-repeat="album in albums">
+            <td>
+                <a ng-click="setAlbum(album)">{{album.title}}</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="top-container">
+    Search: <input ng-model="searchLibrary" />
+</div>
+<div class="clearfix"></div>
+<div id="library-items">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Artist
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Album
+                </th>
+                <th>
+                    Track number
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in library | filter:searchLibrary">
+                <td>
+                    {{item.info.artist}}
+                </td>
+                <td>
+                    {{item.track_title}}
+                </td>
+                <td>
+                    {{item.info.album}}
+                </td>
+                <td>
+                    {{item.info.track_number}}
+                </td>
+                <td>
+                    <button ng-click="play(item)" class="fa fa-play"></button>
+                    <button ng-click="enqueue(item)" class="fa fa-play-circle"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

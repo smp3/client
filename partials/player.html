@@ -1,11 +1,16 @@
 <div>
-    Now playing: 
-    <span ng-show="current_file">
+    <div>
+        Current playlist: ---
+    </div>
+    <div>
+        Now playing:
+    </div> 
+    <div class="current-track" ng-show="current_file">
         {{current_file.info.artist}} - {{current_file.info.title}}
-    </span>
-    <span ng-hide="current_file">
+    </div>
+    <div class="current-track" ng-hide="current_file">
         ---
-    </span>
+    </div>
 </div>
 
 <button ng-click="play()" class="fa fa-play"></button>
