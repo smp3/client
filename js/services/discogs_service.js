@@ -16,7 +16,7 @@ smp3App.service('DiscogsService', ['$http', 'store', 'ConfigService', function (
 
         this.appendKey = function (url) {
             if (!this.hasConfig()) {
-                alert('Discogs not configured');
+               // alert('Discogs not configured');
                 return url;
             }
 
