@@ -44,9 +44,11 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             console.log('savePlaylist', playlist);
             var url, method;
             if (playlist.id) { //PUT
+                console.log('PUT');
                 url = '/api/' + playlist.id + '/playlist';
                 method = 'PUT';
             } else { //POST
+                console.log('SAVE');
                 url = '/api/playlists';
                 method = 'POST';
             }
