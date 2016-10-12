@@ -83,6 +83,10 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
             playlist.enqueue(file);
         };
 
+        
+        
+       
+        
         $scope.getLibrary();
 
     }]);

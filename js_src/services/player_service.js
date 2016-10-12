@@ -40,6 +40,7 @@ smp3App.service('PlayerService', ['ngAudio', 'store', 'PlaylistService', functio
             }
 
             $this.scope.current_file = file;
+            console.log("FILE", file);
 
             token = store.get('jwt');
             config = store.get('config');

@@ -5,7 +5,9 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
         $scope.getPlaylists = function () {
             $http.get('/api/playlists').success(function (data) {
                 $scope.playlists = data;
-              
+                if(!playlistService.getCurrentPlaylist()) {
+                   playlistService.setCurrent(playlistService.findFirst());
+                }
             });
         };
 
@@ -14,8 +16,7 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             playlistService.setPointer(index);
 
             toPlay = playlistService.getCurrent().file;
-            console.log('PLLLAYs', toPlay);
-            console.log('currrrr', playlistService.getCurrent());
+
             player.play(toPlay);
         };
 
@@ -85,6 +86,8 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
 
 
         $scope.getPlaylists();
+       
+      
 
 
     }]);

@@ -7,6 +7,14 @@ smp3App.service('PlaylistService', ['store', function (store) {
             $this.scope.pointer = 0;
             $this.scope.current_playlist = null;
         };
+        
+        this.findFirst = function () {
+            if ($this.scope.playlists.length !== 0) {
+                return $this.scope.playlists[0];
+            }
+            
+            return null;
+        };
 
         this.makePlaylist = function (title) {
             return {
@@ -43,6 +51,7 @@ smp3App.service('PlaylistService', ['store', function (store) {
             $this.scope.pointer = 0;
         };
 
+        //TODO rename that properly
         this.setCurrent = function (playlist) {
             //$this.clear();
             console.log('setCurrent', playlist);
@@ -52,6 +61,10 @@ smp3App.service('PlaylistService', ['store', function (store) {
 
         this.getCurrent = function () {
             return $this.scope.current_playlist.items[$this.scope.pointer];
+        };
+        
+        this.getCurrentPlaylist = function() {
+            return $this.scope.current_playlist;
         };
 
         this.hasNext = function () {
