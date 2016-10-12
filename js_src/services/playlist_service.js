@@ -8,20 +8,21 @@ smp3App.service('PlaylistService', ['store', function (store) {
             $this.scope.current_playlist = null;
         };
 
-        this.makePlaylist = function(title) {
-             return {
+        this.makePlaylist = function (title) {
+            return {
                 title: title,
-                playlist_files: []
+                items: []
             };
-            
+
         };
-        
+
         this.empty = function () {
             return $this.scope.current_playlist.playlist_files.length == 0;
         };
 
         this.enqueue = function (file) {
-            $this.scope.current_playlist.playlist_files.push({file: file});
+            console.log(file);
+            $this.scope.current_playlist.items.push({file: file});
         };
 
         this.clear = function () {
@@ -31,6 +32,7 @@ smp3App.service('PlaylistService', ['store', function (store) {
 
         this.setCurrent = function (playlist) {
             //$this.clear();
+            console.log('setCurrent', playlist);
             $this.scope.current_playlist = playlist;
 
         };
@@ -50,6 +52,20 @@ smp3App.service('PlaylistService', ['store', function (store) {
 
         this.setPointer = function (index) {
             $this.scope.pointer = index;
+        };
+
+       
+        
+        this.transformToSend = function (playlist) {
+            pl = {id: playlist.id, title: playlist.title, items: []};
+            
+            oldItems = playlist.items;
+            
+            for(var i in oldItems) {
+                pl.items.push(oldItems[i].file.id);
+            }
+            
+            return pl;
         };
 
         this.delete = function (index) {

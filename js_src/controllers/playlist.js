@@ -1,26 +1,26 @@
 Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 'store', 'PlayerService', 'PlaylistService',
-    function ($scope, $location, $http, store, player, playlist) {
-        playlist.bindScope($scope);
+    function ($scope, $location, $http, store, player, playlistService) {
+        playlistService.bindScope($scope);
 
         $scope.getPlaylists = function () {
             console.log('playlists');
             $http.get('/api/playlists').success(function (data) {
                 $scope.playlists = data;
-                var new_playlist = playlist.makePlaylist('Default');
+                var new_playlist = playlistService.makePlaylist('Default');
                 $scope.playlists.push(new_playlist);
-                playlist.setCurrent(new_playlist);
+                playlistService.setCurrent(new_playlist);
             });
         };
 
         $scope.play = function (index) {
             player.stop();
-            playlist.setPointer(index);
+            playlistService.setPointer(index);
 //            console.log(playlist.getCurrent());
-            player.play(playlist.getCurrent().file);
+            player.play(playlistService.getCurrent().file);
         };
 
         $scope.delete = function (index) {
-            playlist.delete(index);
+            playlistService.delete(index);
         };
 
         $scope.newPlaylist = function () {
@@ -29,20 +29,22 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
 //                title: 'title',
 //                playlist_files: []
 //            };
-            var new_playlist = playlist.makePlaylist('title');
+            var new_playlist = playlistService.makePlaylist('title');
             $scope.playlists.push(new_playlist);
             //$scope.setCurrentPlaylist(new_playlist);
 
         };
 
         $scope.setCurrentPlaylist = function (current_playlist) {
-            playlist.setCurrent(current_playlist);
+            playlistService.setCurrent(current_playlist);
             console.log('Current playlist', current_playlist);
         };
 
         $scope.savePlaylist = function (playlist) {
-            console.log('savePlaylist', playlist);
+            transformedPlaylist = playlistService.transformToSend(playlist);
+            
             var url, method;
+            
             if (playlist.id) { //PUT
                 console.log('PUT');
                 url = '/api/' + playlist.id + '/playlist';
@@ -56,7 +58,7 @@ Smp3Controllers.controller('Smp3PlaylistCtrl', ['$scope', '$location', '$http', 
             $http({
                 url: url,
                 method: method,
-                data: {'playlist': playlist}
+                data: {'playlist': transformedPlaylist}
             }).then(function (response) {
                 console.log('Repsonse', response);
                 $scope.getPlaylists();
