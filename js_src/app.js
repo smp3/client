@@ -16,7 +16,7 @@ var smp3App = angular.module('smp3App', [
 
     $httpProvider.interceptors.push('jwtInterceptor');
 }).config(function Config($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['config', 'store', '$location', function (config, store, $location) {
+    jwtInterceptorProvider.tokenGetter = ['config', 'store', '$location', function (configuration, store, $location) {
 
             if (configuration.url.substr(configuration.url.length - 5) == '.html') {
                 return null;
@@ -36,12 +36,12 @@ var smp3App = angular.module('smp3App', [
                 return $q.reject(rejection);
             },
             'request': function (config, store, $location) {
-                var sconfig = angular.fromJson(localStorage.getItem('config'));
+                var configuration = angular.fromJson(localStorage.getItem('config'));
                // console.log('exc', sconfiguration.excempt_urls);
-                if (configuration.url.substr(configuration.url.length - 5) != '.html'
-                        && !hasUrl(sconfiguration.excempt_urls, configuration.url)
+                if (config.url.substr(config.url.length - 5) != '.html'
+//                        && !hasUrl(sconfiguration.excempt_urls, configuration.url)
                         ) {
-                    configuration.url = sconfiguration.server_url + configuration.url;
+                    config.url = configuration.server_url + config.url;
                 }
 
                 return config || $q.when(config);

@@ -79,7 +79,6 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
 
         $scope.play = function (file) {
             player.play(file);
-            //lyrics.getLyrics(file.track.title, file.artist.name);
         };
 
         $scope.enqueue = function (file) {

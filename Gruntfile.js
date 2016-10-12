@@ -9,7 +9,7 @@ var js_files = [
 ];
 
 var less_files = [
-    'less/*.less'
+    'less/**/*.less'
 
 ];
 
@@ -50,5 +50,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['concat', 'less']);
+    grunt.registerTask('default', ['concat','less']);
 };
