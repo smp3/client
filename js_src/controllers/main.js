@@ -1,7 +1,7 @@
 Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$httpParamSerializer', 'ngAudio', 'store', 'PlayerService',
-    'PlaylistService', 'DiscogsService', 'LyricsService',
+    'PlaylistService',
     function ($scope, $location, $http, $httpParamSerializer, ngAudio, store,
-    player, playlist, discogs, lyrics) {
+    player, playlist) {
 
         
         var config = store.get('config');
@@ -30,7 +30,7 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
         $scope.setArtist = function (artist) {
             $scope.artist = artist;
             $scope.getLibrary();
-            discogs.fetchArtist(artist);
+            
         };
 
         $scope.setAlbum = function (album) {
