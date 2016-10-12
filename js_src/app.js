@@ -1,13 +1,4 @@
-'use strict';
-
-var hasUrl = function (urls, url) {
-    for(var i in urls) {
-        if(url.indexOf(urls[i])!==-1) {
-            return true;
-        }
-    }
-    return false;
-};
+console.log('app.js');
 
 var smp3App = angular.module('smp3App', [
     'ngRoute',
@@ -25,9 +16,9 @@ var smp3App = angular.module('smp3App', [
 
     $httpProvider.interceptors.push('jwtInterceptor');
 }).config(function Config($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['config', 'store', '$location', function (config, store, $location) {
+    jwtInterceptorProvider.tokenGetter = ['config', 'store', '$location', function (configuration, store, $location) {
 
-            if (config.url.substr(config.url.length - 5) == '.html') {
+            if (configuration.url.substr(configuration.url.length - 5) == '.html') {
                 return null;
             }
 
@@ -45,12 +36,12 @@ var smp3App = angular.module('smp3App', [
                 return $q.reject(rejection);
             },
             'request': function (config, store, $location) {
-                var sconfig = angular.fromJson(localStorage.getItem('config'));
-               // console.log('exc', sconfig.excempt_urls);
+                var configuration = angular.fromJson(localStorage.getItem('config'));
+               // console.log('exc', sconfiguration.excempt_urls);
                 if (config.url.substr(config.url.length - 5) != '.html'
-                        && !hasUrl(sconfig.excempt_urls, config.url)
+//                        && !hasUrl(sconfiguration.excempt_urls, configuration.url)
                         ) {
-                    config.url = sconfig.server_url + config.url;
+                    config.url = configuration.server_url + config.url;
                 }
 
                 return config || $q.when(config);
@@ -89,6 +80,8 @@ smp3App.config(['$routeProvider',
                     controller: 'Smp3MainCtrl'
                 });
     }]);
+
+
 
 var Smp3Controllers = angular.module('Smp3Controllers', [
     'angular-storage'

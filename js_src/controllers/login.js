@@ -1,10 +1,13 @@
 Smp3Controllers.controller('Smp3LoginCtrl', ['$scope', '$http', 'store', '$location',
     function ($scope, $http, store, $location) {
         var stored_config = store.get('config');
+        if(!stored_config) {
+            stored_config = {};
+        }
         $scope.login = function (user) {
             console.log('login', user);
-            if ($scope.config.server_url) {
-                stored_config.server_url = $scope.config.server_url;
+            if ($scope.configuration.server_url) {
+                stored_config.server_url = $scope.configuration.server_url;
                 console.log(stored_config); 
                 store.set('config', stored_config);
             }
