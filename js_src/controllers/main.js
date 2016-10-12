@@ -22,7 +22,6 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
         };
 
         $scope.logout = function () {
-            console.log('logout');
             store.set('jwt', '');
             $location.path('/login');
         };
@@ -35,7 +34,6 @@ Smp3Controllers.controller('Smp3MainCtrl', ['$scope', '$location', '$http', '$ht
 
         $scope.setAlbum = function (album) {
             $scope.album = album;
-            console.log(album);
             $scope.getLibrary();
         };
 

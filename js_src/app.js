@@ -1,4 +1,4 @@
-console.log('app.js');
+//TODO: https://github.com/chieffancypants/angular-loading-bar
 
 var smp3App = angular.module('smp3App', [
     'ngRoute',
@@ -37,7 +37,6 @@ var smp3App = angular.module('smp3App', [
             },
             'request': function (config, store, $location) {
                 var configuration = angular.fromJson(localStorage.getItem('config'));
-               // console.log('exc', sconfiguration.excempt_urls);
                 if (config.url.substr(config.url.length - 5) != '.html'
 //                        && !hasUrl(sconfiguration.excempt_urls, configuration.url)
                         ) {

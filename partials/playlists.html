@@ -1,9 +1,9 @@
 <button ng-click="newPlaylist()" class="fa fa-plus" style="display: block; clear: both;"></button>
 <ul class="list-group">
-    <li class="list-group-item" ng-repeat="playlist in playlists" ng-click="setCurrentPlaylist(playlist)">
+    <li class="list-group-item" ng-repeat="playlist in playlists track by $index" ng-click="setCurrentPlaylist(playlist)">
         <input ng-model="playlist.title" /> 
         <button ng-click="savePlaylist(playlist)" class="fa fa-floppy-o"></button>
-        <button ng-click="deletePlaylist(playlist.id)" class="fa fa-times"></button>
+        <button ng-click="deletePlaylist(playlist, $index)" class="fa fa-times"></button>
     </li>
 </ul>
 <div id="playlist" ng-include="'partials/playlist.html'" ></div>     
